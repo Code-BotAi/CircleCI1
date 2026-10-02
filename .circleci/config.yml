@@ -1,0 +1,17 @@
+
+version: 2.1
+
+jobs:
+  say-hello:
+      - image: cimg/base:current
+  steps:
+      - checkout
+      - run: python.py
+
+# Orchestrate jobs using workflows
+# See: https://circleci.com/docs/guides/orchestrate/workflows/ & https://circleci.com/docs/reference/configuration-reference/#workflows
+workflows:
+  test-and-deploy: # This is the name of the workflow, feel free to change it to better match your workflow.
+    # Inside the workflow, you define the jobs you want to run.
+    jobs:
+      - build
